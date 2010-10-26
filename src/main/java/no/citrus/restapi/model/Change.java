@@ -6,7 +6,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(name = "change")
+@XmlRootElement (name = "payload")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Change {
 	public String after;
