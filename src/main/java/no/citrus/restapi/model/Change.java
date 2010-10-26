@@ -1,30 +1,71 @@
 package no.citrus.restapi.model;
 
+import java.util.List;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name = "change")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Change {
-	@XmlElement
 	public String after;
-	@XmlElement
 	public String before;
-	@XmlElement
 	public no.citrus.restapi.model.Repository repository;
+	public String ref;
+	public String compare;
+	public boolean forced;
+	public Pusher pusher;
+	public List<Commit> commits;
 
 	public Change() {
 	}
 
-    public Change(String after, String before, Repository repository) {
+    public Change(String after, String before, Repository repository, String ref, String compare, boolean forced, Pusher pusher,
+    		List<Commit> commits) {
         this.after = after;
         this.before = before;
         this.repository = repository;
+        this.ref = ref;
+        this.compare = compare;
+        this.forced = forced;
+        this.pusher = pusher;
+        this.commits = commits;
     }
 
-    public String getAfter() {
+    public Pusher getPusher() {
+		return pusher;
+	}
+
+	public void setPusher(Pusher pusher) {
+		this.pusher = pusher;
+	}
+
+	public String getRef() {
+		return ref;
+	}
+
+	public void setRef(String ref) {
+		this.ref = ref;
+	}
+
+	public String getCompare() {
+		return compare;
+	}
+
+	public void setCompare(String compare) {
+		this.compare = compare;
+	}
+
+	public boolean isForced() {
+		return forced;
+	}
+
+	public void setForced(boolean forced) {
+		this.forced = forced;
+	}
+
+	public String getAfter() {
         return after;
     }
 
@@ -46,6 +87,14 @@ public class Change {
 
 	public void setBefore(String before) {
 		this.before = before;
+	}
+
+	public List<Commit> getCommits() {
+		return commits;
+	}
+
+	public void setCommits(List<Commit> commits) {
+		this.commits = commits;
 	}
 
 	@Override
