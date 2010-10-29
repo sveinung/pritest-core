@@ -13,7 +13,8 @@ public class MeasureTest {
 
     @Test
     public void shouldSupportName() {
-        Measure measure = new Measure("abc");
+        Measure measure = new Measure();
+        measure.setName("abc");
         assertThat(measure.getName(), equalTo("abc"));
     }
 }
