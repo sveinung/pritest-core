@@ -5,26 +5,6 @@ import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 
-/*
-   "commits": [
-    {
-      "added": [
-        "test1\/README"
-      ], 
-      "author": {
-        "email": "oyvindvol@gmail.com", 
-        "name": "\u00d8yvind Voldsund"
-      }, 
-      "id": "c117410bae42b0cf7f97c6d5d1a09feeba02779c", 
-      "message": "Added README to test1", 
-      "modified": [], 
-      "removed": [], 
-      "timestamp": "2010-10-24T02:35:15-07:00", 
-      "url": "http:\/\/github.com\/oyvindvol\/citrus-exp\/commit\/c117410bae42b0cf7f97c6d5d1a09feeba02779c"
-    }
-  ], 
-
- */
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Commit {
 	public List<String> added;

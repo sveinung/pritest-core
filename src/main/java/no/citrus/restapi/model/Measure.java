@@ -3,29 +3,30 @@ package no.citrus.restapi.model;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Measure {
-	private String source;
-    private String name;
-    private List<Measure> children;
-    private double value;
-    private Map<String, String> properties;
-    private Category category;
-    private Date date;
+	public String source;
+	public String name;
+	@XmlElementWrapper(name = "children")
+	@XmlElement(name = "measure")
+	public List<Measure> children;
+	public double value;
+	public Category category;
+	public Date date;
+	public boolean failed;
 
     public Measure() {}
-
-    public Measure(String source, String name, List<Measure> children) {
-    	this.source = source;
-        this.name = name;
-        this.children = children;
+    
+    public Measure(String name) {
+    	this.name = name;
     }
 
     public String getName() {
@@ -60,14 +61,6 @@ public class Measure {
 		this.value = value;
 	}
 
-	public Map<String, String> getProperties() {
-		return properties;
-	}
-
-	public void setProperties(Map<String, String> properties) {
-		this.properties = properties;
-	}
-
 	public Category getCategory() {
 		return category;
 	}
@@ -83,5 +76,12 @@ public class Measure {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-    
+
+	public boolean isFailed() {
+		return failed;
+	}
+
+	public void setFailed(boolean failed) {
+		this.failed = failed;
+	}
 }
