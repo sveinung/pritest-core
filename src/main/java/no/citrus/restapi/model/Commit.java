@@ -1,5 +1,6 @@
 package no.citrus.restapi.model;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -12,7 +13,7 @@ public class Commit {
 	public String message;
 	public List<String> modified;
 	public List<String> removed;
-	public String timestamp;
+	public Date timestamp;
 	public String url;
 	public Author author;
 	
@@ -30,10 +31,10 @@ public class Commit {
 	public void setMessage(String message) {
 		this.message = message;
 	}
-	public String getTimestamp() {
+	public Date getTimestamp() {
 		return timestamp;
 	}
-	public void setTimestamp(String timestamp) {
+	public void setTimestamp(Date timestamp) {
 		this.timestamp = timestamp;
 	}
 	public String getUrl() {
