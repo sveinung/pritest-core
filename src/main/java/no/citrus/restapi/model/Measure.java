@@ -10,7 +10,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-public class Measure {
+public class Measure implements Comparable<Measure> {
 	public String source;
 	public String name;
 	@XmlElementWrapper(name = "children")
@@ -20,12 +20,28 @@ public class Measure {
 	public Category category;
 	public Date date;
 	public boolean failed;
+	public int numOfFails;
 
-    public Measure() {}
+	public Measure() {}
+    
+    public Measure(String source, Date date, List<Measure> children, int numOfFails) {
+    	this.source = source;
+    	this.date = date;
+    	this.children = children;
+    	this.numOfFails = numOfFails;
+    }
     
     public Measure(String name) {
     	this.name = name;
     }
+    
+    public int getNumOfFails() {
+		return numOfFails;
+	}
+
+	public void setNumOfFails(int numOfFails) {
+		this.numOfFails = numOfFails;
+	}
 
     public String getName() {
         return name;
@@ -81,5 +97,10 @@ public class Measure {
 
 	public void setFailed(boolean failed) {
 		this.failed = failed;
+	}
+	
+	@Override
+	public int compareTo(Measure arg) {
+		return this.numOfFails - arg.getNumOfFails();
 	}
 }
