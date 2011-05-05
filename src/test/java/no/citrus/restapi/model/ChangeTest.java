@@ -10,7 +10,7 @@ import org.junit.Test;
 public class ChangeTest {
 	@Ignore
 	@Test
-    public void shouldSupportAfterAndBefore() {
+    public void should_support_after_and_before() {
 //        Change change = new Change("abc");
 //        assertThat(change.getAfter(), equalTo("abc"));
     }

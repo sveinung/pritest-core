@@ -12,7 +12,7 @@ import org.junit.Test;
 public class MeasureTest {
 
     @Test
-    public void shouldSupportName() {
+    public void should_support_name() {
         Measure measure = new Measure();
         measure.setName("abc");
         assertThat(measure.getName(), equalTo("abc"));
