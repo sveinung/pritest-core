@@ -24,7 +24,6 @@
   </dependencies>
   
   <build>
-    <finalName>rest-api</finalName>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
