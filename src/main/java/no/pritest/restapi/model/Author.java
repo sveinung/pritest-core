@@ -15,32 +15,32 @@
     along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-package no.citrus.restapi.model;
-
-import java.util.List;
+package no.pritest.restapi.model;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(name="measures")
-@XmlAccessorType(XmlAccessType.PROPERTY)
-public class MeasureList{
-    protected List<Measure> list;
+@XmlAccessorType(XmlAccessType.FIELD)
+public class Author {
+	public String email;
+	public String name;
+	
+	public Author() {}
 
-    public MeasureList(){}
+	public String getEmail() {
+		return email;
+	}
 
-    public MeasureList(List<Measure> list){
-        this.list=list;
-    }
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-    @XmlElement(name="measure")
-    public List<Measure> getList(){
-        return list;
-    }
-    
-    public void setList(List<Measure> list) {
-    	this.list = list;
-    }
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	
 }

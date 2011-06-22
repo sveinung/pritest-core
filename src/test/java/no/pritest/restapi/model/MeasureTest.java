@@ -15,8 +15,21 @@
     along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-package no.citrus.restapi.model;
+package no.pritest.restapi.model;
 
-public enum Category {
-	testSuite, testCase
+
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.junit.Assert.assertThat;
+
+import org.junit.Test;
+
+
+public class MeasureTest {
+
+    @Test
+    public void should_support_name() {
+        Measure measure = new Measure();
+        measure.setName("abc");
+        assertThat(measure.getName(), equalTo("abc"));
+    }
 }

@@ -15,7 +15,7 @@
     along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-package no.citrus.util;
+package no.pritest.util;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
@@ -27,17 +27,17 @@ public class JavaPackageUtilTest {
 
 	@Test
 	public void should_parse_file_path_into_package() {
-		String fileName1 = "src/main/java/no/citrus/Example.java";
-		String fileName2 = "src/test/java/no/citrus/Examplee.java";
+		String fileName1 = "src/main/java/no/pritest/Example.java";
+		String fileName2 = "src/test/java/no/pritest/Examplee.java";
 		
 		JavaPackageUtil jpu = new JavaPackageUtil(
 				new String[]{"src/main/java", "src/test/java"});
 		
 		assertThat(jpu.parseFilePathToPackage(fileName1),
-				is(equalTo("no.citrus.Example")));
+				is(equalTo("no.pritest.Example")));
 		
 		assertThat(jpu.parseFilePathToPackage(fileName2),
-				is(equalTo("no.citrus.Examplee")));
+				is(equalTo("no.pritest.Examplee")));
 	}
 	
 	@Test
@@ -62,8 +62,8 @@ public class JavaPackageUtilTest {
 				new String[]{"src/main/java", "src/test/java"});
 		
 		String testCaseName =
-			jpu.prepareTestCaseName("src/main/java/no/citrus/Example.java");
+			jpu.prepareTestCaseName("src/main/java/no/pritest/Example.java");
 		
-		assertThat(testCaseName, is(equalTo("no.citrus.ExampleTest")));
+		assertThat(testCaseName, is(equalTo("no.pritest.ExampleTest")));
 	}
 }

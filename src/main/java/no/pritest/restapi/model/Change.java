@@ -15,7 +15,7 @@
     along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-package no.citrus.restapi.model;
+package no.pritest.restapi.model;
 
 import java.util.List;
 
@@ -28,7 +28,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Change {
 	public String after;
 	public String before;
-	public no.citrus.restapi.model.Repository repository;
+	public no.pritest.restapi.model.Repository repository;
 	public String ref;
 	public String compare;
 	public boolean forced;

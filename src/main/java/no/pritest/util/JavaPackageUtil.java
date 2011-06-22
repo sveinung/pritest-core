@@ -15,7 +15,7 @@
     along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-package no.citrus.util;
+package no.pritest.util;
 
 import java.io.File;
 

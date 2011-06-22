@@ -15,7 +15,7 @@
     along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-package no.citrus.restapi.model;
+package no.pritest.restapi.model;
 
 
 import java.util.Date;
