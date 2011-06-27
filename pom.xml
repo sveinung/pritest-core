@@ -11,8 +11,20 @@
   <url>http://maven.apache.org</url>
 
   <properties>
+    <mockito.version>1.8.5</mockito.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
+
+  <repositories>
+    <repository>
+        <id>javaparser</id>
+        <name>JavaParser Repository</name>
+        <url>http://javaparser.googlecode.com/svn/maven2</url>
+        <snapshots>
+            <enabled>false</enabled>
+        </snapshots>
+      </repository>
+  </repositories>
 
   <dependencies>
     <dependency>
@@ -20,6 +32,27 @@
       <artifactId>junit</artifactId>
       <version>4.8.1</version>
       <scope>test</scope>
+    </dependency>
+    <dependency>
+        <groupId>com.google.code.javaparser</groupId>
+        <artifactId>javaparser</artifactId>
+        <version>1.0.8</version>
+    </dependency>
+    <dependency>
+        <groupId>log4j</groupId>
+        <artifactId>log4j</artifactId>
+        <version>1.2.16</version>
+    </dependency>
+    <dependency>
+        <groupId>org.hamcrest</groupId>
+        <artifactId>hamcrest-all</artifactId>
+        <version>1.1</version>
+    </dependency>
+    <dependency>
+        <groupId>org.mockito</groupId>
+        <artifactId>mockito-core</artifactId>
+        <version>${mockito.version}</version>
+        <scope>test</scope>
     </dependency>
   </dependencies>
   

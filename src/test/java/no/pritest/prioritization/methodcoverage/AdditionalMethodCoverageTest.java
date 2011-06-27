@@ -15,31 +15,25 @@
     along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-package no.pritest.restapi.model;
+package no.pritest.prioritization.methodcoverage;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
+import japa.parser.ParseException;
+import org.junit.Test;
+
+import java.io.IOException;
 import java.util.List;
 
-@XmlRootElement(name="measures")
-@XmlAccessorType(XmlAccessType.PROPERTY)
-public class MeasureList{
-    protected List<Measure> list;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.not;
+import static org.junit.Assert.assertThat;
 
-    public MeasureList(){}
+public class AdditionalMethodCoverageTest {
 
-    public MeasureList(List<Measure> list){
-        this.list=list;
-    }
+    @Test
+	public void should_give_a_list_of_test_cases_with_size_greater_than_zero() throws ParseException, IOException {
+		AdditionalMethodCoverage tmc = new AdditionalMethodCoverage("src/main/java", "src/test/java");
+		List<String> testCases = tmc.getTestCases();
 
-    @XmlElement(name="measure")
-    public List<Measure> getList(){
-        return list;
-    }
-    
-    public void setList(List<Measure> list) {
-    	this.list = list;
-    }
+		assertThat(testCases.size(), is(not(0)));
+	}
 }

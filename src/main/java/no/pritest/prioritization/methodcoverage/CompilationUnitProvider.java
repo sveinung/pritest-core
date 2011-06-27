@@ -15,31 +15,28 @@
     along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-package no.pritest.restapi.model;
+package no.pritest.prioritization.methodcoverage;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
+import japa.parser.JavaParser;
+import japa.parser.ParseException;
+import japa.parser.ast.CompilationUnit;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
-@XmlRootElement(name="measures")
-@XmlAccessorType(XmlAccessType.PROPERTY)
-public class MeasureList{
-    protected List<Measure> list;
+public class CompilationUnitProvider {
 
-    public MeasureList(){}
+	public static List<CompilationUnit> getCompilationUnits(List<File> files) throws ParseException, IOException {
+		List<CompilationUnit> compilationUnits = new ArrayList<CompilationUnit>();
+		for(File f : files){
+			try {
+				compilationUnits.add(JavaParser.parse(f, "UTF-8"));
+			} catch (Exception e) {
+			}
+		}
+		return compilationUnits;
+	}
 
-    public MeasureList(List<Measure> list){
-        this.list=list;
-    }
-
-    @XmlElement(name="measure")
-    public List<Measure> getList(){
-        return list;
-    }
-    
-    public void setList(List<Measure> list) {
-    	this.list = list;
-    }
 }

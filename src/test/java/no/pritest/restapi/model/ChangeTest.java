@@ -17,8 +17,6 @@
 
 package no.pritest.restapi.model;
 
-import static org.junit.Assert.assertThat;
-
 import org.junit.Ignore;
 import org.junit.Test;
 
