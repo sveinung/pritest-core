@@ -14,24 +14,15 @@
  You should have received a copy of the GNU General Public License
  along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 package no.pritest.prioritization;
 
-import no.pritest.util.VCSStatusProvider;
-import org.eclipse.jgit.errors.NoWorkTreeException;
+import org.junit.Test;
 
-import java.io.IOException;
-import java.util.List;
+public class CurrentCodeChangesTest {
 
-public class CurrentCodeChanges {
-    public List<String> prioritize(List<String> localTestClasses, VCSStatusProvider statusProvider)
-            throws NoWorkTreeException, IOException {
-
-        List<String> gitStatusPriorityList = statusProvider.getGitStatusPriorityList();
-		for(String localTestClass : localTestClasses) {
-			if(!gitStatusPriorityList.contains(localTestClass)) {
-				gitStatusPriorityList.add(localTestClass);
-			}
-		}
-		return gitStatusPriorityList;
-	}
+    @Test
+    public void should_include_local_unchanged_classes_in_test_run() {
+        
+    }
 }
