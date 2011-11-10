@@ -16,5 +16,26 @@
  */
 package no.pritest.prioritization;
 
+import no.pritest.util.VCSStatusProvider;
+import no.pritest.vcs.GitStatus;
+import org.eclipse.jgit.errors.NoWorkTreeException;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.List;
+
 public class CurrentCodeChanges {
+    public List<String> prioritize(List<String> localTestClasses, File baseDir, String sourceDirectory,
+                                   String testSourceDirectory)
+            throws NoWorkTreeException, IOException {
+        
+		VCSStatusProvider gsp = new VCSStatusProvider(baseDir, sourceDirectory, testSourceDirectory, new GitStatus(baseDir));
+		List<String> gitStatusPriorityList = gsp.getGitStatusPriorityList();
+		for(String localTestClass : localTestClasses) {
+			if(!gitStatusPriorityList.contains(localTestClass)) {
+				gitStatusPriorityList.add(localTestClass);
+			}
+		}
+		return gitStatusPriorityList;
+	}
 }
