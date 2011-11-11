@@ -1,23 +1,22 @@
 /**
-    This file is part of Pritest.
+ This file is part of Pritest.
 
-    Pritest is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
+ Pritest is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
 
-    Pritest is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
+ Pritest is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
 
-    You should have received a copy of the GNU General Public License
-    along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
-*/
+ You should have received a copy of the GNU General Public License
+ along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
+ */
 
 package no.pritest.util;
 
-import no.pritest.util.JavaPackageUtil;
 import no.pritest.vcs.VCSStatus;
 import org.eclipse.jgit.errors.NoWorkTreeException;
 
@@ -29,50 +28,50 @@ import java.util.Set;
 
 
 public class VCSStatusProvider {
-	
-	private File basedir;
-	private final String sourceDirectory;
+
+    private File basedir;
+    private final String sourceDirectory;
     private final String testSourceDirectory;
     VCSStatus status;
 
     public VCSStatusProvider(File basedir, String sourceDirectory, String testSourceDirectory, VCSStatus status) throws IOException {
-		this.basedir = basedir;
-		this.sourceDirectory = sourceDirectory.replace(basedir.getPath() + File.separator, "");
-		this.testSourceDirectory = testSourceDirectory.replace(basedir.getPath() + File.separator, "");
+        this.basedir = basedir;
+        this.sourceDirectory = sourceDirectory.replace(basedir.getPath() + File.separator, "");
+        this.testSourceDirectory = testSourceDirectory.replace(basedir.getPath() + File.separator, "");
         this.status = status;
-	}
-	
-	public List<String> getGitStatusPriorityList() throws NoWorkTreeException, IOException {
-		List<String> statusList = callStatus();
-		List<String> finalList = new ArrayList<String>();
+    }
 
-		finalList.addAll(statusList);
+    public List<String> getGitStatusPriorityList() throws NoWorkTreeException, IOException {
+        List<String> statusList = callStatus();
+        List<String> finalList = new ArrayList<String>();
 
-		return finalList;
-	}
-	
-	public List<String> callStatus() throws IOException {
-		List<String> gitStatusList = new ArrayList<String>();
+        finalList.addAll(statusList);
 
-		addTestCasesToList(status.getUntracked(), gitStatusList);
-		addTestCasesToList(status.getModified(), gitStatusList);
-		
-		return gitStatusList;
-	}
+        return finalList;
+    }
 
-	private void addTestCasesToList(Set<String> changedFiles, List<String> statusList) {
-		
-		JavaPackageUtil jpu =
-			new JavaPackageUtil(new String[]{sourceDirectory, testSourceDirectory,
-                    basedir.getName() + File.separator + sourceDirectory,
-                    basedir.getName() + File.separator + testSourceDirectory});
+    public List<String> callStatus() throws IOException {
+        List<String> gitStatusList = new ArrayList<String>();
 
-		for (String changedFile : changedFiles) {
-			String testCaseName = jpu.prepareTestCaseName(changedFile);
+        addTestCasesToList(status.getUntracked(), gitStatusList);
+        addTestCasesToList(status.getModified(), gitStatusList);
 
-			if (testCaseName != null && !statusList.contains(testCaseName)) {
-				statusList.add(testCaseName);
-			}
-		}
-	}
+        return gitStatusList;
+    }
+
+    private void addTestCasesToList(Set<String> changedFiles, List<String> statusList) {
+
+        JavaPackageUtil jpu =
+                new JavaPackageUtil(new String[]{sourceDirectory, testSourceDirectory,
+                        basedir.getName() + File.separator + sourceDirectory,
+                        basedir.getName() + File.separator + testSourceDirectory});
+
+        for (String changedFile : changedFiles) {
+            String testCaseName = jpu.prepareTestCaseName(changedFile);
+
+            if (testCaseName != null && !statusList.contains(testCaseName)) {
+                statusList.add(testCaseName);
+            }
+        }
+    }
 }
