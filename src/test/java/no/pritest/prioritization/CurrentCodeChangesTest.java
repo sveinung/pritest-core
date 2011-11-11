@@ -25,11 +25,13 @@ import org.mockito.MockitoAnnotations;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
+import static org.mockito.Mockito.when;
 
 public class CurrentCodeChangesTest {
 
@@ -47,11 +49,13 @@ public class CurrentCodeChangesTest {
 
     @Test
     public void should_include_local_unchanged_classes_in_test_run() throws IOException {
+        when(statusProvider.getGitStatusPriorityList()).thenReturn(
+                Arrays.asList("no.SomeClassTest", "no.SomeOtherClassTest"));
 
-        List<String> list = new ArrayList<String>();
+        List<String> localTestCases = new ArrayList<String>();
+        localTestCases.add("no.another.ClassTest");
 
-        List<String> answerTestCases = new ArrayList<String>();
-        
-        assertThat(currentCodeChanges.prioritize(list), is(equalTo(answerTestCases)));
+        assertThat(currentCodeChanges.prioritize(localTestCases), is(equalTo(
+                Arrays.asList("no.SomeClassTest", "no.SomeOtherClassTest", "no.another.ClassTest"))));
     }
 }

@@ -20,6 +20,7 @@ import no.pritest.util.VCSStatusProvider;
 import org.eclipse.jgit.errors.NoWorkTreeException;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class CurrentCodeChanges {
@@ -33,8 +34,9 @@ public class CurrentCodeChanges {
     public List<String> prioritize(List<String> localTestClasses)
             throws NoWorkTreeException, IOException {
 
-        List<String> gitStatusPriorityList = statusProvider.getGitStatusPriorityList();
-		for(String localTestClass : localTestClasses) {
+        List<String> gitStatusPriorityList = new ArrayList<String>();
+        gitStatusPriorityList.addAll(statusProvider.getGitStatusPriorityList());
+        for(String localTestClass : localTestClasses) {
 			if(!gitStatusPriorityList.contains(localTestClass)) {
 				gitStatusPriorityList.add(localTestClass);
 			}
