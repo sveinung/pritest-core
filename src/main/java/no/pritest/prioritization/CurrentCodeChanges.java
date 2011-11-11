@@ -23,7 +23,14 @@ import java.io.IOException;
 import java.util.List;
 
 public class CurrentCodeChanges {
-    public List<String> prioritize(List<String> localTestClasses, VCSStatusProvider statusProvider)
+
+    private final VCSStatusProvider statusProvider;
+
+    public CurrentCodeChanges(VCSStatusProvider statusProvider) {
+        this.statusProvider = statusProvider;
+    }
+
+    public List<String> prioritize(List<String> localTestClasses)
             throws NoWorkTreeException, IOException {
 
         List<String> gitStatusPriorityList = statusProvider.getGitStatusPriorityList();

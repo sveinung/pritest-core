@@ -17,12 +17,41 @@
 
 package no.pritest.prioritization;
 
+import no.pritest.util.VCSStatusProvider;
+import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
 
 public class CurrentCodeChangesTest {
 
+    private CurrentCodeChanges currentCodeChanges;
+
+    @Mock
+    private VCSStatusProvider statusProvider;
+
+    @Before
+    public void setup() {
+        MockitoAnnotations.initMocks(this);
+
+        currentCodeChanges = new CurrentCodeChanges(statusProvider);
+    }
+
     @Test
-    public void should_include_local_unchanged_classes_in_test_run() {
+    public void should_include_local_unchanged_classes_in_test_run() throws IOException {
+
+        List<String> list = new ArrayList<String>();
+
+        List<String> answerTestCases = new ArrayList<String>();
         
+        assertThat(currentCodeChanges.prioritize(list), is(equalTo(answerTestCases)));
     }
 }
