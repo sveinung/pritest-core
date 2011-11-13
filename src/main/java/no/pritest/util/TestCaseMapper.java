@@ -19,13 +19,13 @@ package no.pritest.util;
 
 import java.io.File;
 
-public class JavaPackageUtil {
+public class TestCaseMapper {
 
 	private final static String JAVA_SUFFIX = ".java";
 	
 	private final String[] folders;
 
-	public JavaPackageUtil(String[] folders) {
+	public TestCaseMapper(String[] folders) {
 		this.folders = folders;
 	}
 
@@ -60,7 +60,7 @@ public class JavaPackageUtil {
 		return packageName;
 	}
 
-	public static String makeTestCaseName(String className) {
+	public static String toTestCase(String className) {
 		if (className != null) {
 			if (!className.endsWith("Test")) {
 				return className + "Test";
@@ -72,7 +72,7 @@ public class JavaPackageUtil {
 
 	public String prepareTestCaseName(String fileName) {
 		String className = parseFilePathToPackage(fileName);
-		String testCaseName = makeTestCaseName(className);
+		String testCaseName = toTestCase(className);
 		
 		return testCaseName;
 	}

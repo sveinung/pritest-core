@@ -23,14 +23,14 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-public class JavaPackageUtilTest {
+public class TestCaseMapperTest {
 
 	@Test
 	public void should_parse_file_path_into_package() {
 		String fileName1 = "src/main/java/no/pritest/Example.java";
 		String fileName2 = "src/test/java/no/pritest/Examplee.java";
 		
-		JavaPackageUtil jpu = new JavaPackageUtil(
+		TestCaseMapper jpu = new TestCaseMapper(
 				new String[]{"src/main/java", "src/test/java"});
 		
 		assertThat(jpu.parseFilePathToPackage(fileName1),
@@ -44,7 +44,7 @@ public class JavaPackageUtilTest {
 	public void should_return_name_of_test_case_given_class_name() {
 		String className = "Example";
 		
-		assertThat(JavaPackageUtil.makeTestCaseName(className),
+		assertThat(TestCaseMapper.toTestCase(className),
 			is(equalTo("ExampleTest")));
 	}
 	
@@ -52,13 +52,13 @@ public class JavaPackageUtilTest {
 	public void should_return_name_of_test_case_given_test_case_name() {
 		String className = "ExampleTest";
 		
-		assertThat(JavaPackageUtil.makeTestCaseName(className),
+		assertThat(TestCaseMapper.toTestCase(className),
 			is(equalTo("ExampleTest")));
 	}
 	
 	@Test
 	public void should_remove_path_and_append_test_suffix() {
-		JavaPackageUtil jpu = new JavaPackageUtil(
+		TestCaseMapper jpu = new TestCaseMapper(
 				new String[]{"src/main/java", "src/test/java"});
 		
 		String testCaseName =
