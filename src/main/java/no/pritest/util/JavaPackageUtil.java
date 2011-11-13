@@ -37,7 +37,7 @@ public class JavaPackageUtil {
 		if (pathPartToRemove != null && fileName.endsWith(JAVA_SUFFIX)) {
 			
 			packageName = fileName.substring(pathPartToRemove.length(), fileName.length() - JAVA_SUFFIX.length());
-			packageName = trimDirectorySeperator(packageName);
+			packageName = trimDirectorySeparator(packageName);
 			packageName = packageName.replace(File.separatorChar, '.');
 		}
 		
@@ -53,7 +53,7 @@ public class JavaPackageUtil {
 		return null;
 	}
 
-	private String trimDirectorySeperator(String packageName) {
+	private String trimDirectorySeparator(String packageName) {
 		if (packageName.startsWith(File.separator)) {
 			packageName = packageName.substring(1);
 		}
