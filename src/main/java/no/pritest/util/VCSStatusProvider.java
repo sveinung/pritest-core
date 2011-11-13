@@ -61,13 +61,13 @@ public class VCSStatusProvider {
 
     private void addTestCasesToList(Set<String> changedFiles, List<String> statusList) {
 
-        JavaPackageUtil jpu =
-                new JavaPackageUtil(new String[]{sourceDirectory, testSourceDirectory,
+        TestCaseMapper mapper =
+                new TestCaseMapper(new String[]{sourceDirectory, testSourceDirectory,
                         basedir.getName() + File.separator + sourceDirectory,
                         basedir.getName() + File.separator + testSourceDirectory});
 
         for (String changedFile : changedFiles) {
-            String testCaseName = jpu.prepareTestCaseName(changedFile);
+            String testCaseName = mapper.prepareTestCaseName(changedFile);
 
             if (testCaseName != null && !statusList.contains(testCaseName)) {
                 statusList.add(testCaseName);

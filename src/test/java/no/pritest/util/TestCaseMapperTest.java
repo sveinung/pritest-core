@@ -30,13 +30,13 @@ public class TestCaseMapperTest {
 		String fileName1 = "src/main/java/no/pritest/Example.java";
 		String fileName2 = "src/test/java/no/pritest/Examplee.java";
 		
-		TestCaseMapper jpu = new TestCaseMapper(
+		TestCaseMapper mapper = new TestCaseMapper(
 				new String[]{"src/main/java", "src/test/java"});
 		
-		assertThat(jpu.parseFilePathToPackage(fileName1),
+		assertThat(mapper.parseFilePathToPackage(fileName1),
 				is(equalTo("no.pritest.Example")));
 		
-		assertThat(jpu.parseFilePathToPackage(fileName2),
+		assertThat(mapper.parseFilePathToPackage(fileName2),
 				is(equalTo("no.pritest.Examplee")));
 	}
 	
@@ -58,11 +58,11 @@ public class TestCaseMapperTest {
 	
 	@Test
 	public void should_remove_path_and_append_test_suffix() {
-		TestCaseMapper jpu = new TestCaseMapper(
+		TestCaseMapper mapper = new TestCaseMapper(
 				new String[]{"src/main/java", "src/test/java"});
 		
 		String testCaseName =
-			jpu.prepareTestCaseName("src/main/java/no/pritest/Example.java");
+			mapper.prepareTestCaseName("src/main/java/no/pritest/Example.java");
 		
 		assertThat(testCaseName, is(equalTo("no.pritest.ExampleTest")));
 	}
