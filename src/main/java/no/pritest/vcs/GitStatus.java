@@ -33,7 +33,7 @@ public class GitStatus implements VCSStatus {
     public GitStatus(File directory) throws IOException {
         File repositoryPath = new File(directory.getAbsolutePath());
 		RepositoryBuilder repositoryBuilder = new RepositoryBuilder();
-        Repository repository = repositoryBuilder.findGitDir(repositoryPath).build();
+        Repository repository = repositoryBuilder.setWorkTree(repositoryPath).build();
         Git git = new Git(repository);
 		status = git.status().call();
     }
