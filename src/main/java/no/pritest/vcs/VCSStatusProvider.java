@@ -47,12 +47,7 @@ public class VCSStatusProvider {
         addTestCasesToList(status.getUntracked(), gitStatusList);
         addTestCasesToList(status.getModified(), gitStatusList);
 
-        List<String> statusList = gitStatusList;
-        List<String> finalList = new ArrayList<String>();
-
-        finalList.addAll(statusList);
-
-        return finalList;
+        return gitStatusList;
     }
 
     private void addTestCasesToList(Set<String> changedFiles, List<String> statusList) {
