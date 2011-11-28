@@ -15,9 +15,10 @@
     along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-package no.pritest.util;
+package no.pritest.vcs;
 
 import no.pritest.vcs.VCSStatus;
+import no.pritest.vcs.VCSStatusProvider;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;

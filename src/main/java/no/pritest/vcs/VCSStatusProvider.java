@@ -15,8 +15,9 @@
  along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package no.pritest.util;
+package no.pritest.vcs;
 
+import no.pritest.util.TestCaseMapper;
 import no.pritest.vcs.VCSStatus;
 import org.eclipse.jgit.errors.NoWorkTreeException;
 
