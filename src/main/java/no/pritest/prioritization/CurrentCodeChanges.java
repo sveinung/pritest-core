@@ -16,7 +16,7 @@
  */
 package no.pritest.prioritization;
 
-import no.pritest.util.VCSStatusProvider;
+import no.pritest.vcs.VCSStatusProvider;
 import org.eclipse.jgit.errors.NoWorkTreeException;
 
 import java.io.IOException;

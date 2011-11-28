@@ -17,7 +17,7 @@
 
 package no.pritest.prioritization;
 
-import no.pritest.util.VCSStatusProvider;
+import no.pritest.vcs.VCSStatusProvider;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
