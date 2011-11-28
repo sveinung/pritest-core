@@ -18,7 +18,6 @@
 package no.pritest.vcs;
 
 import no.pritest.util.TestCaseMapper;
-import no.pritest.vcs.VCSStatus;
 import org.eclipse.jgit.errors.NoWorkTreeException;
 
 import java.io.File;
@@ -43,21 +42,17 @@ public class VCSStatusProvider {
     }
 
     public List<String> getGitStatusPriorityList() throws NoWorkTreeException, IOException {
-        List<String> statusList = callStatus();
-        List<String> finalList = new ArrayList<String>();
-
-        finalList.addAll(statusList);
-
-        return finalList;
-    }
-
-    public List<String> callStatus() throws IOException {
         List<String> gitStatusList = new ArrayList<String>();
 
         addTestCasesToList(status.getUntracked(), gitStatusList);
         addTestCasesToList(status.getModified(), gitStatusList);
 
-        return gitStatusList;
+        List<String> statusList = gitStatusList;
+        List<String> finalList = new ArrayList<String>();
+
+        finalList.addAll(statusList);
+
+        return finalList;
     }
 
     private void addTestCasesToList(Set<String> changedFiles, List<String> statusList) {
